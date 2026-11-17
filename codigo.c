@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int gerar_numero(a){
+int gerar_numero(int a){
     int num_rand;
     num_rand = rand() % a + 1;
     return num_rand;
@@ -22,8 +22,11 @@ int soma(){
 }
 
 int subtracao(){
-    int num_1 = gerar_numero(100);
-    int num_2 = gerar_numero(100);
+    int num_1, num_2;
+    do{
+        num_1 = gerar_numero(100);
+        num_2 = gerar_numero(100);
+    }while(num_1 < num_2);
     printf("Conta: %d - %d\n", num_1, num_2);
     return num_1 - num_2;
 }
@@ -40,32 +43,40 @@ int divisao(){
     do{
         num_1 = gerar_numero(100);
         num_2 = gerar_numero(100);
-    }while(((num_1 % 5 != 0) || (num_1 % 2 != 0)) && ((num_2 % 5 != 0) || (num_2 % 2 != 0)));
-    if (num_2 > num_1){
-        aux = num_1;
-        num_1 = num_2;
-        num_2 = aux;
-    }
+    }while(num_1 % num_2 != 0);
     printf("Conta: %d / %d\n", num_1, num_2);
     return num_1 / num_2;
 }
 
-/*int main(void){
+int main(void){
     srand(time(NULL));
     int num_1;
     int num_2;
+    int op;
     int resultado;
     char revelar;
+    
     do{
-        num_1 = gerar_numero();
-        num_2 = gerar_numero();
-        printf("Conta: ");
-        printf("%d * %d\n", num_1, num_2);
-        resultado = num_1 * num_2;
-        printf("Aperte enter para revelar a resposta.\n");
+        op = gerar_operacao();
+        printf("Aperte o botao para comecar.\n");
+        scanf("%c", &revelar);
+        switch (op){
+            case 1:
+                resultado = soma();
+                break;
+            case 2:
+                resultado = subtracao();
+                break;
+            case 3:
+                resultado = multiplicacao();
+                break;
+            case 4:
+                resultado = divisao();
+                break;
+        }
         scanf("%c", &revelar);
         printf("Resultado: %d\n", resultado);
-        printf("====================\n\n");
-    }while (revelar != '0');
+        printf("========================\n");
+    }while(revelar != '0');
     return 0;
-}*/
+}
