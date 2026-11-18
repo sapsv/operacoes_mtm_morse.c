@@ -60,6 +60,7 @@ int main(void){
         op = gerar_operacao();
         printf("Aperte o botao para comecar.\n");
         scanf("%c", &revelar);
+        if (revelar == '0') return 0;
         switch (op){
             case 1:
                 resultado = soma();
