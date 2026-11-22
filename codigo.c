@@ -39,7 +39,7 @@ int multiplicacao(){
 }
 
 int divisao(){
-    int num_1, num_2, aux;
+    int num_1, num_2;
     do{
         num_1 = gerar_numero(100);
         num_2 = gerar_numero(100);
