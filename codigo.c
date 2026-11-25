@@ -58,7 +58,7 @@ int main(void){
     
     do{
         op = gerar_operacao();
-        printf("Aperte o botao para comecar.\n");
+        printf("Aperte para comecar.\n");
         scanf("%c", &revelar);
         if (revelar == '0') return 0;
         switch (op){
@@ -77,7 +77,6 @@ int main(void){
         }
         scanf("%c", &revelar);
         printf("Resultado: %d\n", resultado);
-        printf("========================\n");
     }while(revelar != '0');
     return 0;
 }
